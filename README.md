@@ -2,7 +2,7 @@
 
 Robot building and assembly website for our ECE 5 (UC San Diego) Lab 4 line-following robot.
 
-**Team 69 – CANT:** Kevin Nguyen · Kevin Chrikjian · Tanzim Rahman · Nizar Ali
+**Team 69 – KANT:** Kevin Nguyen · Alex Chrikjian · Nizar Ali · Tanzim Rahman
 
 ## Editing the site
 
