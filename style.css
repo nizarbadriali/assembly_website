@@ -67,6 +67,14 @@ code { font-family: var(--mono); font-size: .9em; background: var(--accent-soft)
   max-width: 1120px; margin: 0 auto; padding: 0 16px;
   display: flex; align-items: center; justify-content: space-between; height: 60px;
 }
+.nav { gap: 12px; }
+.brand { margin-right: auto; }
+.powered {
+  color: #fff; text-decoration: none; font-size: .78rem; font-weight: 600; white-space: nowrap;
+  padding: 5px 12px; border-radius: 99px; border: 1px solid rgba(255,255,255,.3);
+  background: rgba(217, 119, 87, .25);
+}
+.powered:hover { background: rgba(217, 119, 87, .45); }
 .brand { color: #fff; font-weight: 800; text-decoration: none; letter-spacing: .02em; }
 .nav-links { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
 .nav-links a {
