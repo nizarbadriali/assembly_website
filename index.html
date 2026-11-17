@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECE 5 Lab 4 – Line Tracking Robot</title>
+  <meta name="description" content="ECE 5 Lab 4 final project: a PID-controlled line following robot built on an ESP32.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+  HOW TO EDIT THIS PAGE
+  ---------------------
+  Images: drop files into the images/ folder using the exact filenames referenced below.
+  If an image file is missing, the page shows a dashed box telling you which file to add.
+-->
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="#top" class="brand">ECE 5 · Lab 4</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="#team">Team</a></li>
+      <li><a href="#build">Build</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">ECE 5 · Embedded Systems &amp; Control · UC San Diego</p>
+      <h1>Lab 4: Line Tracking Robot</h1>
+      <p class="hero-sub">
+        An ESP32-powered robot that follows a black line using a seven-photoresistor sensor array
+        and a PID controller we can tune live with potentiometer knobs.
+      </p>
+      <div class="hero-meta">
+        <div><span>Team #</span><strong>69</strong></div>
+        <div><span>Team Name</span><strong>KANT</strong></div>
+      </div>
+    </div>
+    <svg class="hero-line" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,90 C200,90 260,20 420,30 S700,110 860,70 S1080,20 1200,40" />
+    </svg>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section id="team" class="section">
+    <div class="container">
+      <h2 class="section-title"><span>01</span> The Team</h2>
+      <div class="team-grid">
+        <div class="member"><div class="avatar">KN</div><h3>Kevin Nguyen</h3></div>
+        <div class="member"><div class="avatar">KC</div><h3>Kevin Chrikjian</h3></div>
+        <div class="member"><div class="avatar">TR</div><h3>Tanzim Rahman</h3></div>
+        <div class="member"><div class="avatar">NA</div><h3>Nizar Ali</h3></div>
+      </div>
+
+      <h3 class="sub-title">Competition Day Team Photo</h3>
+      <figure class="photo wide">
+        <img src="images/team-photo.jpg" alt="Our team on competition day" data-file="images/team-photo.jpg">
+        <figcaption>Team KANT on competition day</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ BUILD ============ -->
+  <section id="build" class="section alt">
+    <div class="container">
+      <h2 class="section-title"><span>02</span> Building the Robot</h2>
+      <p class="lead">
+        We built and tested each subsystem on its own first, then brought them together on our 3D-printed chassis.
+        Testing every part separately made it much easier to find problems before running the full line-following program.
+      </p>
+
+      <h3 class="sub-title">Prototyping Parts</h3>
+      <div class="card-grid">
+        <article class="card">
+          <figure class="photo"><img src="images/build-potentiometers.jpg" alt="Potentiometer breadboard" data-file="images/build-potentiometers.jpg"></figure>
+          <div class="card-body">
+            <span class="tag">1A</span>
+            <h4>Potentiometers</h4>
+            <p>Four potentiometers on a breadboard set <b>Speed</b>, <b>P</b>, <b>I</b> and <b>D</b>. Each one works as a
+              voltage divider read by the ESP32's ADC, so we could retune the robot right at the track
+              without uploading new code.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="photo"><img src="images/build-photoresistors.jpg" alt="Photoresistor sensor array" data-file="images/build-photoresistors.jpg"></figure>
+          <div class="card-body">
+            <span class="tag">1B</span>
+            <h4>Photoresistors</h4>
+            <p>Seven photoresistors, each in a voltage divider with a 10&nbsp;kΩ resistor and wired to IO1–IO7, make up
+              the line sensor. Black tape reflects less light than white paper, so the voltage at each sensor
+              shows whether it is over the line.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="photo"><img src="images/build-motors.jpg" alt="Motors and L298N motor driver" data-file="images/build-motors.jpg"></figure>
+          <div class="card-body">
+            <span class="tag">1C</span>
+            <h4>Motor Driver &amp; ESP32</h4>
+            <p>An L298N dual H-bridge drives the two DC gear motors. IN1–IN4 set each motor's direction and
+              ENA/ENB take PWM signals for speed. We soldered leads onto the motor tabs and covered the
+              joints in hot glue for strain relief. All grounds share a common connection.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="photo"><img src="images/build-cad.png" alt="Onshape CAD of chassis" data-file="images/build-cad.png"></figure>
+          <div class="card-body">
+            <span class="tag">1D</span>
+            <h4>CAD the Chassis</h4>
+            <p>We started from the provided chassis in Onshape and changed it to fit our robot. The motors mount at the rear
+              and a ball caster supports the front.</p>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="sub-title">Assembly</h3>
+      <div class="assembly">
+        <figure class="photo"><img src="images/assembly-1.jpg" alt="Assembly in progress" data-file="images/assembly-1.jpg"></figure>
+        <figure class="photo"><img src="images/assembly-2.jpg" alt="Assembly in progress" data-file="images/assembly-2.jpg"></figure>
+        <div class="assembly-text">
+          <ol class="steps">
+            <li>Taped the yellow gear motors to the chassis and screwed the ball caster on with M3×6 screws.</li>
+            <li>Mounted the ESP32, the L298N and the breadboards, and organized the wiring with tape.</li>
+            <li>Mounted the photoresistor array at the front at a fixed height, with a light shield around it.</li>
+            <li>Re-ran each test program (potentiometers, photoresistors, motors) on the assembled robot before running the full code.</li>
+            <li>Added an indicator LED so we could see which calibration step the robot was on.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>ECE 5 · Lab 4 · UC San Diego Jacobs School of Engineering</p>
+  <p>Kevin Nguyen · Kevin Chrikjian · Tanzim Rahman · Nizar Ali</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
