@@ -11,7 +11,6 @@ Robot building and assembly website for our ECE 5 (UC San Diego) Lab 4 line-foll
 
 | File | Section |
 |---|---|
-| `images/team-photo.jpg` | Competition day team photo |
 | `images/build-potentiometers.jpg` | Build – 1A Potentiometers |
 | `images/build-photoresistors.jpg` | Build – 1B Photoresistors |
 | `images/build-motors.jpg` | Build – 1C Motor driver & ESP32 |
