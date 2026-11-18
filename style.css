@@ -170,7 +170,12 @@ code { font-family: var(--mono); font-size: .9em; background: var(--accent-soft)
 .photo-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 32px; }
 
 /* ---------- Build cards ---------- */
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.card-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 720px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+.photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+.card .photo-pair .photo img, .card .photo-pair .img-placeholder { aspect-ratio: 2 / 3; height: 100%; }
+.card .photo-pair.fit { grid-template-columns: 1fr; }
+.card .photo-pair.fit .photo img { aspect-ratio: 8 / 3; object-fit: contain; background: #fff; }
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column;
@@ -182,12 +187,12 @@ code { font-family: var(--mono); font-size: .9em; background: var(--accent-soft)
 .card-body p { margin: 0 0 10px; font-size: .95rem; }
 .tag { font-family: var(--mono); font-size: .75rem; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 99px; }
 
-.assembly { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.assembly { display: grid; grid-template-columns: 1fr; gap: 24px; }
 .assembly-text { grid-column: 1 / -1; }
 .steps { padding-left: 20px; margin: 8px 0 12px; }
 .steps li { margin-bottom: 6px; }
 @media (min-width: 900px) {
-  .assembly { grid-template-columns: 1fr 1fr 1.2fr; align-items: start; }
+  .assembly { grid-template-columns: 1fr 1.2fr; align-items: start; }
   .assembly-text { grid-column: auto; }
 }
 
