@@ -192,8 +192,8 @@ code { font-family: var(--mono); font-size: .9em; background: var(--accent-soft)
 .steps { padding-left: 20px; margin: 8px 0 12px; }
 .steps li { margin-bottom: 6px; }
 @media (min-width: 900px) {
-  .assembly { grid-template-columns: 1fr 1.2fr; align-items: start; }
-  .assembly-text { grid-column: auto; }
+  /* column widths match the 4:3 photo and 16:9 video so both render at the same height */
+  .assembly { grid-template-columns: 4fr 5.333fr; align-items: start; }
 }
 
 /* ---------- Annotated robot ---------- */
